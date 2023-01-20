@@ -55,6 +55,8 @@ h1, .card-container, .results{
 img {
     object-fit: contain;
     display: block;
+    pointer-events: none;
+    user-select: none;
 }
 
 

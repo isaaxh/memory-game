@@ -11,6 +11,7 @@ let click1 = 0;
 let click2 = 0;
 let scoreCounter = 0;
 let failCounter = 0;
+let cardsUncovered = new Set();
 
 
 function isNumAvailable(num, arr) {
@@ -39,7 +40,7 @@ function generateRandomArray() {
     return randomArray;
 }
 
-function changeCard() {
+function changeCards() {
     const randomArray = generateRandomArray();
     const card1 = document.querySelector(`.card-${randomArray[0]}`);
     const card2 = document.querySelector(`.card-${randomArray[1]}`);
@@ -58,24 +59,37 @@ function changeCard() {
 
 function uncoverCard(e) {
     const target_img = e.target.querySelector('img');
+    
+    if (target_img.style.display === 'block') {return};
+
     target_img.style.display = 'block';    
+    cardsUncovered.add(target_img);
     
     trackClicks(target_img);
+
+    if(cardsUncovered.size === 6){
+        cardsUncovered.clear();
+        window.setTimeout(function() {
+            changeCards()}, 
+            1000);
+        window.setTimeout(function() {
+            coverAllCards()}, 
+            2000);
+    }
 }
 
 function trackClicks(target_img) {
     if(clickCounter === 1) {
-        console.log(clickCounter);
         clickCounter++;
-        click1 = target_img.className.split(" ")[0];
+        console.trace('click1 ' + clickCounter);
 
-        console.log(click1);
+        click1 = target_img.className.split(" ")[0];
     } else if (clickCounter === 2) {
-        console.log(clickCounter);
-        clickCounter = 1;
+        console.trace('click2 ' + clickCounter);
+
         click2 = target_img.className.split(" ")[0];
-        console.log(click2);
         compareClicks(click1, click2);
+        clickCounter = 1;
         click1 = 0;
         click2 = 0;
     }
@@ -109,12 +123,22 @@ function uncoverAllCards (){
     })
 }
 
+function resetScores() {
+    scoreCounter = 0;
+    document.querySelector('.score').innerText = 'Score: 0';
+    failCounter = 0;
+    document.querySelector('.fail').innerText = 'Failed-Attempts: 0';
+
+}
+
 btnReset.addEventListener('click', () => {
-    changeCard();
+    uncoverAllCards();
+    resetScores();
+    changeCards();
     window.setTimeout(function() {
         coverAllCards()}, 
-        1000);
+        2000);
 })
 
-changeCard();
+changeCards();
 window.setTimeout(function() {coverAllCards()}, 2000);
