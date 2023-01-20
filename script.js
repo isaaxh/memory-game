@@ -10,6 +10,7 @@ let clickCounter = 1;
 let click1 = 0;
 let click2 = 0;
 let scoreCounter = 0;
+let failCounter = 0;
 
 
 function isNumAvailable(num, arr) {
@@ -82,9 +83,13 @@ function trackClicks(target_img) {
 
 function compareClicks(c1, c2) {
     const scores = document.querySelector('.score');
+    const fails = document.querySelector('.fail');
     if(c1 === c2) {
         scoreCounter ++;
         scores.innerText = `Score: ${scoreCounter}`;  
+    } else {
+        failCounter++;
+        fails.innerText = `Failed-Attempts: ${failCounter}`;
     }
 }
 
