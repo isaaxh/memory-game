@@ -9,6 +9,4 @@ Random changing of cards
 - make a loop and assign each one of those random numbers to each of the indices in the array
 - now assign each imgs to the indices in the array so they don't have same values
 
-Covering the cards
-
--
+[live demo](https://isaaxh.github.io/memory-game)
