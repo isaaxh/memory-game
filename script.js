@@ -93,7 +93,7 @@ function compareClicks(c1, c2) {
     const fails = document.querySelector('.fail');
     if(c1 === c2) {
         scoreCounter ++;
-        scores.innerText = `Score: ${scoreCounter}`;  
+        scores.innerText = `Scores: ${scoreCounter}`;  
     } else {
         failCounter++;
         fails.innerText = `Failed-Attempts: ${failCounter}`;
