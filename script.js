@@ -56,27 +56,31 @@ function changeCard() {
 }
 
 function uncoverCard(e) {
-    const img = e.target.querySelector('img');
-    img.style.display = 'block';
+    const target_img = e.target.querySelector('img');
+    target_img.style.display = 'block';    
     
+    trackClicks(target_img);
+}
+
+function trackClicks(target_img) {
     if(clickCounter === 1) {
         console.log(clickCounter);
         clickCounter++;
-        click1 = img.className.split(" ")[0];
-        
+        click1 = target_img.className.split(" ")[0];
+
         console.log(click1);
     } else if (clickCounter === 2) {
         console.log(clickCounter);
         clickCounter = 1;
-        click2 = img.className.split(" ")[0];
+        click2 = target_img.className.split(" ")[0];
         console.log(click2);
-        checkImg(click1, click2);
+        compareClicks(click1, click2);
+        click1 = 0;
+        click2 = 0;
     }
-
-
 }
 
-function checkImg(c1, c2) {
+function compareClicks(c1, c2) {
     const scores = document.querySelector('.score');
     if(c1 === c2) {
         scoreCounter ++;
