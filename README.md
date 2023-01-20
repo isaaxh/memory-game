@@ -10,3 +10,5 @@ Random changing of cards
 - now assign each imgs to the indices in the array so they don't have same values
 
 Covering the cards
+
+-

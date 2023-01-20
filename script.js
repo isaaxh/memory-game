@@ -88,7 +88,7 @@ function compareClicks(c1, c2) {
     }
 }
 
-function coverCards(){
+function coverAllCards(){
     const imgs = document.querySelectorAll('img');
 
     imgs.forEach((img) => {
@@ -96,10 +96,20 @@ function coverCards(){
     })
 }
 
+function uncoverAllCards (){
+    const imgs = document.querySelectorAll('img');
 
-// changeCard();
+    imgs.forEach((img) => {
+        img.style.display = 'block';
+    })
+}
 
 btnReset.addEventListener('click', () => {
-    coverCards();
     changeCard();
+    window.setTimeout(function() {
+        coverAllCards()}, 
+        1000);
 })
+
+changeCard();
+window.setTimeout(function() {coverAllCards()}, 2000);
