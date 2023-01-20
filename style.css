@@ -36,6 +36,13 @@ h1, .card-container, .results{
     height: 15rem;
     border: 2px solid rgb(0, 0, 0);
     margin: .5rem 0;
+    overflow: hidden;
+    border-radius: 6px;
+}
+
+
+img {
+    object-fit: contain;
 }
 
 
