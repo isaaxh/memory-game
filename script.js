@@ -11,31 +11,40 @@ const rabbit1 = document.querySelector('.rabbit-1');
 
 
 
-function changeCard(){
-    const card = document.querySelector(`.card-${randomNumber()}`);
+function changeCard() {
+    const card = document.querySelector(`.card-${generateRandomNumber()}`);
     card.appendChild(cat1);
 }
 
-function randomNumber(){
-    let randomArray = [];
-    let randomNumber = 0;
-    for(let i = 0; i < 6; i++) {
-        randomNumber = Math.floor(Math.random() * 6) + 1;
-        randomArray.forEach((randomNumber,randomArray) => {
-            if(!randomArray.includes(randomNumber)){
-                randomArray.push(randomNumber);
-            };
-        });
-        // randomArray.push(randomNumber);
-        console.log(randomArray);
-    }
 
-    // console.log(randomArray);
-
-    // return 
+function generateRandomNumber() {
+    return Math.floor(Math.random() * 6) + 1;
 }
 
-randomNumber();
-// changeCard();
+function isNumAvailable(num, arr) {
+    return arr.includes(num);
+}
+
+function generateRandomArray() {
+    let randomArray = [];
+    let randomNumber = 0;
+
+    let arrayComplete = false;
+
+    while (arrayComplete === false) {
+        randomNumber = generateRandomNumber();
+        if (isNumAvailable(randomNumber, randomArray) === false) {
+            randomArray.push(randomNumber);
+            if (randomArray.length === 6) {
+                arrayComplete = true;
+                console.log(randomArray);
+            }
+        };
+    }
+    return randomArray;
+}
 
 
+
+changeCard();
+// numIsPresent(,randomArray);
