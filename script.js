@@ -59,12 +59,9 @@ function changeCards() {
 
 function uncoverCard(e) {
     const target_img = e.target.querySelector('img');
-    
     if (target_img.style.display === 'block') {return};
-
     target_img.style.display = 'block';    
     cardsUncovered.add(target_img);
-    
     trackClicks(target_img);
 
     if(cardsUncovered.size === 6){
@@ -81,12 +78,8 @@ function uncoverCard(e) {
 function trackClicks(target_img) {
     if(clickCounter === 1) {
         clickCounter++;
-        console.trace('click1 ' + clickCounter);
-
         click1 = target_img.className.split(" ")[0];
     } else if (clickCounter === 2) {
-        console.trace('click2 ' + clickCounter);
-
         click2 = target_img.className.split(" ")[0];
         compareClicks(click1, click2);
         clickCounter = 1;
