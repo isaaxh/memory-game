@@ -1,7 +1,8 @@
 # Memory Game
 
 A classic matching game built using HTML, CSS and JavaScript. The game features a grid of cards, each with a unique image on one side and a plain back on the other. The player must flip over the cards and try to match pairs of images. The game keeps track of the player's score and the number of failed attempts, and displays them on the screen.
-Features
+
+## Features
 
 - Classic matching game
 - Grid of cards with unique images
